@@ -13,5 +13,6 @@ __pycache__/
 .venv/
 output/
 venv/
+data/parsed/
 data/raw/**/*.pdf
 reports/figures/*.png
