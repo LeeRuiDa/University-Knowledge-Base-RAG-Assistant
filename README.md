@@ -25,7 +25,7 @@ A retrieval-augmented assistant that answers questions over university policies 
 
 Generic chatbots often hallucinate or miss institution-specific rules. This project uses retrieval-augmented generation (RAG) to answer questions from curated university documents instead of relying on model memory alone.
 
-It is designed to be a strong CV project because it demonstrates:
+It is designed to be a strong project because it demonstrates:
 
 - document ingestion and parsing
 - chunking and embeddings
