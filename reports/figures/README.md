@@ -1,2 +1,1 @@
-Generated screenshots, architecture diagrams, and evaluation charts will live here.
-
+Text-first figures for the README live here so the repo stays lightweight and easy to publish.
