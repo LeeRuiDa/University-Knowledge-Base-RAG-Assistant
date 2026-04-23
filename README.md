@@ -300,6 +300,7 @@ The ingestion step also writes chunk inspection artifacts under `data/parsed/`, 
 
 - The current corpus uses public official UNL pages and documents captured through `data/corpus_manifest.csv`.
 - `data/raw/` and `data/parsed/` are generated during ingestion and are intentionally not committed.
+- `reports/*.json` are generated benchmark outputs and are intentionally not committed.
 - Binary PDFs are re-downloaded from the manifest during ingestion instead of being vendored in the repo.
 - OpenRouter can be used through its OpenAI-compatible endpoint and embeddings API: [Quickstart](https://openrouter.ai/docs/quickstart) and [Embeddings](https://openrouter.ai/docs/api-reference/embeddings).
 - Qdrant local mode is convenient for development, but it does not support concurrent access from multiple Python processes. For shared API/UI access or parallel evaluation, set `QDRANT_URL` and use a normal Qdrant server.

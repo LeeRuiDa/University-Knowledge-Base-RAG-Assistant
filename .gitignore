@@ -15,5 +15,6 @@ output/
 venv/
 data/parsed/
 data/raw/
+reports/*.json
 data/raw/**/*.pdf
 reports/figures/*.png
