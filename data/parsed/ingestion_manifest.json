@@ -1,0 +1,63 @@
+{
+  "ready": true,
+  "collection_name": "university_knowledge_base",
+  "qdrant_mode": "local",
+  "embedding_provider": "openrouter",
+  "generation_provider": "openrouter",
+  "retrieval_strategy": "hybrid",
+  "corpus_manifest_path": "data\\corpus_manifest.csv",
+  "files_indexed": 24,
+  "sections_loaded": 285,
+  "chunks_indexed": 383,
+  "document_types": [
+    "academic_calendar",
+    "academic_policy",
+    "attendance_policy",
+    "billing_policy",
+    "capstone_guidelines",
+    "college_overview",
+    "course_catalog",
+    "degree_requirements",
+    "financial_aid",
+    "internship_policy",
+    "payment_faq",
+    "program_overview",
+    "registration_policy",
+    "scholarship_policy",
+    "student_services",
+    "tuition_fees"
+  ],
+  "years": [
+    2025
+  ],
+  "programs": [
+    "computer_science_undergraduate"
+  ],
+  "sources": [
+    "data/raw/unl/unl_academic_calendar.html",
+    "data/raw/unl/unl_add_drop_withdraw.html",
+    "data/raw/unl/unl_billing_process.html",
+    "data/raw/unl/unl_class_attendance_policy.pdf",
+    "data/raw/unl/unl_cost_of_attendance.html",
+    "data/raw/unl/unl_course_withdrawal_appeal.html",
+    "data/raw/unl/unl_cs_course_catalog.html",
+    "data/raw/unl/unl_cs_degree_requirements.html",
+    "data/raw/unl/unl_cs_internship_credit.html",
+    "data/raw/unl/unl_cs_major_overview.html",
+    "data/raw/unl/unl_cs_senior_design.html",
+    "data/raw/unl/unl_engineering_college_overview.html",
+    "data/raw/unl/unl_engineering_internships.html",
+    "data/raw/unl/unl_nest_support.html",
+    "data/raw/unl/unl_new_nebraskan_tuition_scholarship.html",
+    "data/raw/unl/unl_pay_bill_online.html",
+    "data/raw/unl/unl_payment_credits_refunds.html",
+    "data/raw/unl/unl_projected_academic_calendars.html",
+    "data/raw/unl/unl_satisfactory_academic_progress.html",
+    "data/raw/unl/unl_scholarships.html",
+    "data/raw/unl/unl_student_account_policies.html",
+    "data/raw/unl/unl_student_organizations.html",
+    "data/raw/unl/unl_undergraduate_academic_policies.pdf",
+    "data/raw/unl/unl_undergraduate_tuition_2025_2026.html"
+  ],
+  "indexed_at": "2026-04-23T08:11:13.187279+00:00"
+}

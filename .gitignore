@@ -1,0 +1,15 @@
+.env
+.pytest_cache/
+.qdrant/
+.ruff_cache/
+.playwright-cli/
+.streamlit/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.DS_Store
+.venv/
+output/
+venv/
