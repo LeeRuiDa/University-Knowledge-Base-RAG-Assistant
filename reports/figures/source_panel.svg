@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1080" viewBox="0 0 1400 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Source panel</title>
+  <desc id="desc">Retrieved source panel showing ranked evidence cards.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="1080" fill="url(#bg)"/>
+  <rect x="120" y="56" width="1160" height="910" rx="28" fill="#ffffff" stroke="#d7e0ef"/>
+  <text x="160" y="112" fill="#0f766e" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="2">RETRIEVED EVIDENCE</text>
+  <text x="160" y="168" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700">Source panel</text>
+  <text x="160" y="214" fill="#475569" font-family="Segoe UI, Arial, sans-serif" font-size="20">Top retrieved chunks for the internship-credit query, including metadata and source links.</text>
+  <rect x="160" y="265" width="1080" height="235" rx="22" fill="#f8fafc" stroke="#d7e0ef"/>
+  <rect x="182" y="287" width="42" height="42" rx="21" fill="#dcfce7"/>
+  <text x="194" y="315" fill="#166534" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">S1</text>
+  <text x="182" y="370" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">UNL Internship Credit for Computing Students</text>
+  <text x="1100" y="330" fill="#0f766e" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Open source</text>
+  <text x="182" y="415" fill="#475569" font-family="Segoe UI, Arial, sans-serif" font-size="18">internship_policy  |  computer_science_undergraduate  |  score 0.8933</text>
+  <text x="182" y="455" fill="#0f766e" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">UNL Internship Credit for Computing Students</text>
+  <text x="182" y="495" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="18">The retrieved chunk states that 3 credits of CSCE 495 count as one tech elective course and</text>
+  <text x="182" y="523" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="18">adds the surrounding internship-for-credit workflow used to issue a permission code.</text>
+  <rect x="160" y="532" width="1080" height="235" rx="22" fill="#f8fafc" stroke="#d7e0ef"/>
+  <rect x="182" y="554" width="42" height="42" rx="21" fill="#dcfce7"/>
+  <text x="194" y="582" fill="#166534" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">S2</text>
+  <text x="182" y="637" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">UNL Computer Science Degree Requirements</text>
+  <text x="1100" y="597" fill="#0f766e" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Open source</text>
+  <text x="182" y="682" fill="#475569" font-family="Segoe UI, Arial, sans-serif" font-size="18">degree_requirements  |  computer_science_undergraduate  |  score 0.3411</text>
+  <text x="182" y="722" fill="#0f766e" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Specific Major Requirements</text>
+  <text x="182" y="762" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="18">This supporting chunk confirms that up to 3 hours of CSCE 495 can be used for technical</text>
+  <text x="182" y="790" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="18">courses, which helps the reranker keep the internship page ahead of the broader catalog page.</text>
+  <rect x="160" y="799" width="1080" height="135" rx="22" fill="#f8fafc" stroke="#d7e0ef"/>
+  <rect x="182" y="821" width="42" height="42" rx="21" fill="#dcfce7"/>
+  <text x="194" y="849" fill="#166534" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">S3</text>
+  <text x="182" y="875" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">UNL Computer Science Degree Requirements</text>
+  <text x="182" y="912" fill="#475569" font-family="Segoe UI, Arial, sans-serif" font-size="18">Additional degree-requirement evidence remains visible for debugging and citation inspection.</text>
+</svg>

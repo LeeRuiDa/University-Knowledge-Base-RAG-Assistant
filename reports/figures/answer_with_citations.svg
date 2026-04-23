@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Answer with citations</title>
+  <desc id="desc">Sample grounded answer card for the University Knowledge Base Assistant.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <rect x="120" y="70" width="1160" height="720" rx="28" fill="#ffffff" stroke="#d7e0ef"/>
+  <rect x="120" y="70" width="1160" height="120" rx="28" fill="#eaf9fb"/>
+  <text x="160" y="120" fill="#0f766e" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="2">UNIVERSITY KNOWLEDGE BASE ASSISTANT</text>
+  <text x="160" y="175" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700">Answer with citations</text>
+  <text x="160" y="255" fill="#475569" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">SAMPLE QUERY</text>
+  <text x="160" y="305" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600">How many credits of CSCE 495 count as one tech elective course?</text>
+  <text x="160" y="385" fill="#475569" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">GROUNDED RESPONSE</text>
+  <text x="160" y="445" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">3 credits of CSCE 495 count as one tech elective course [S1].</text>
+  <rect x="160" y="475" width="615" height="52" rx="26" fill="#fef3c7"/>
+  <text x="178" y="509" fill="#b45309" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Grounded in 1 retrieved chunk. Verify the citation before treating it as policy.</text>
+  <rect x="160" y="558" width="46" height="46" rx="23" fill="#d9fbf6" stroke="#7dd3c7"/>
+  <text x="173" y="588" fill="#115e59" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="700">S1</text>
+  <rect x="160" y="630" width="1090" height="170" rx="22" fill="#f8fafc" stroke="#d7e0ef"/>
+  <text x="182" y="678" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">S1 | UNL Internship Credit for Computing Students</text>
+  <text x="182" y="715" fill="#475569" font-family="Segoe UI, Arial, sans-serif" font-size="18">internship_policy  |  computer_science_undergraduate  |  computing.unl.edu/internship-credit/</text>
+  <text x="182" y="760" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="18">To be issued a permission code to enroll in CSCE 495: Internship for Credit, there are a few steps you must first take.</text>
+  <text x="182" y="790" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="18">The official policy states that 3 credits of CSCE 495 count as one tech elective course for computing students.</text>
+</svg>

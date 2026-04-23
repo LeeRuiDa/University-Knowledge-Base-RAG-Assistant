@@ -1,0 +1,60 @@
+question,expected_doc_id,expected_section,gold_answer,category,difficulty
+"When is the professional admission process automatically performed for qualifying computer science students?",unl_cs_degree_requirements,Major Department Admission,"At the end of the sophomore year.",degree_requirements,easy
+"What grade in CSCE 310 is needed for professional admission to computer science?",unl_cs_degree_requirements,Major Department Admission,"A ""P"" or ""C"" or above in CSCE 310.",degree_requirements,medium
+"What GPA is required for professional admission to the computer science program?",unl_cs_degree_requirements,Major Department Admission,"At least a 2.5 GPA, semester and cumulative.",degree_requirements,easy
+"What can happen if a computer science student's cumulative GPA drops below 2.4?",unl_cs_degree_requirements,Major Department Admission,"The student may be placed on restricted status, removed from the college, and may be unable to graduate.",degree_requirements,medium
+"What grade is required for all courses in the computer science major and minor?",unl_cs_degree_requirements,Grade Rules,"A grade of C or above.",degree_requirements,easy
+"How many hours of pass/no pass CSCE coursework may count toward the computer science minor?",unl_cs_degree_requirements,Grade Rules,"Up to 3 hours.",degree_requirements,medium
+"How many technical elective hours are required in the specific major requirements?",unl_cs_degree_requirements,Specific Major Requirements,"9 to 11 hours.",degree_requirements,easy
+"Which senior design sequence can computer science students use to satisfy the senior design experience requirement?",unl_cs_degree_requirements,Specific Major Requirements,"CSCE 486 and CSCE 487, the honors versions, or the RAIK Design Studio sequence.",degree_requirements,medium
+"Can students complete degree requirements from more than one catalog year?",unl_cs_degree_requirements,Catalog Rule,"No. Students must complete all degree requirements from a single catalog year.",degree_requirements,easy
+"How old can a student's chosen catalog be at the time of graduation?",unl_cs_degree_requirements,Catalog Rule,"It may not be more than 10 years old.",degree_requirements,easy
+"What is the first step in a dispute involving a college policy or grade?",unl_cs_degree_requirements,Grade Rules,"Appeal first to the instructor.",degree_requirements,easy
+"Who is listed as the faculty sponsor for computer science internship-for-credit applications?",unl_cs_internship_credit,UNL Internship Credit for Computing Students,"Dr. Bhuvana Gopal.",internship,medium
+"Which course do students enroll in for internship credit in computing?",unl_cs_internship_credit,UNL Internship Credit for Computing Students,"CSCE 495: Internship for Credit.",internship,easy
+"What is one required step before receiving a permission code for CSCE 495?",unl_cs_internship_credit,UNL Internship Credit for Computing Students,"Students must talk with their industry supervisor, create a job description, and complete the internship-for-credit application.",internship,medium
+"How many credits of CSCE 495 count as one tech elective course?",unl_cs_internship_credit,UNL Internship Credit for Computing Students,"3 credits.",internship,easy
+"If students need extra credit to reach 120 hours, how many hours of CSCE 495 may they take and how many count as a tech elective?",unl_cs_internship_credit,UNL Internship Credit for Computing Students,"They may take up to 6 hours of CSCE 495, but only 3 hours count as a tech elective.",internship,hard
+"How is senior design described by the School of Computing?",unl_cs_senior_design,Senior Design,"It is the School of Computing's capstone course and program.",capstone,easy
+"What kinds of project experience do senior design students bring?",unl_cs_senior_design,Senior Design,"They have experience in multiple programming languages and development platforms and can support many project types.",capstone,medium
+"When is the 2025-26 Senior Design Showcase scheduled?",unl_cs_senior_design,2025-26 Senior Design Showcase,"April 24, 2026 from 1:30 p.m. to 4 p.m.",capstone,easy
+"Where is the 2025-26 Senior Design Showcase held?",unl_cs_senior_design,2025-26 Senior Design Showcase,"Kiewit Hall, 1700 Vine Street, 2nd floor.",capstone,easy
+"What should an organization do if it wants to work with Senior Design on a project?",unl_cs_senior_design,Work With Us,"Contact the School of Computing Senior Design team.",capstone,medium
+"What is the last day to add a regular session class in Fall 2026?",unl_add_drop_withdraw,Add Classes,"August 31, 2026.",registration,easy
+"What is the last day to drop a regular session class with a full refund in Fall 2026?",unl_add_drop_withdraw,Full Refund,"August 31, 2026.",registration,easy
+"What is the last day to drop a regular session class with a partial refund in Fall 2026?",unl_add_drop_withdraw,Partial Refund,"September 18, 2026.",registration,easy
+"What is the last day to withdraw from a regular session class in Fall 2026?",unl_add_drop_withdraw,Withdrawals,"November 13, 2026.",registration,easy
+"How can a student cancel registration before the semester begins without being charged?",unl_add_drop_withdraw,Registration Cancellation,"Drop all classes in MyRED before the last day to drop with a full refund.",registration,medium
+"How are withdrawals after the deadline granted?",unl_add_drop_withdraw,Withdrawals,"Only by petition for extraordinary circumstances.",registration,medium
+"Does not attending a course count as an official drop?",unl_class_attendance_policy,Page 2,"No. Students must officially drop or withdraw through MyRED or the required forms.",attendance,easy
+"What may departments do if a student misses the first class meeting?",unl_class_attendance_policy,Page 2,"They may cancel the course reservation and reassign the space.",attendance,medium
+"When is priority registration for Fall Semester 2025 according to the academic calendar?",unl_academic_calendar,Academic Year 2025â€“2026,"March 24 to April 8, 2025.",academic_calendar,easy
+"When is open registration for Fall Semester 2025?",unl_academic_calendar,Academic Year 2025â€“2026,"April 9 to August 24, 2025.",academic_calendar,easy
+"What is the last day to apply for undergraduate admissions for Summer and Fall 2025?",unl_academic_calendar,Academic Year 2025â€“2026,"May 1, 2025.",academic_calendar,easy
+"What is the resident undergraduate tuition rate per credit hour for in-person/web conferencing in 2025-2026?",unl_undergrad_tuition_2025_2026,Resident Tuition,"$291 per credit hour.",tuition_and_fees,easy
+"What is the non-resident undergraduate tuition rate per credit hour for in-person/web conferencing in 2025-2026?",unl_undergrad_tuition_2025_2026,Non-resident Tuition,"$932 per credit hour.",tuition_and_fees,easy
+"What registration fee is due each semester a student registers for classes?",unl_undergrad_tuition_2025_2026,Mandatory Fees,"$20.",tuition_and_fees,easy
+"What technology fee is charged and what is the semester cap?",unl_undergrad_tuition_2025_2026,Mandatory Fees,"$15 per credit hour with a $225 maximum each semester.",tuition_and_fees,medium
+"What late payment fee is assessed on delinquent student accounts?",unl_student_account_policies,Sanctions,"$35 per month.",billing,easy
+"What can holds on delinquent student accounts prevent?",unl_student_account_policies,Sanctions,"They can block diploma release and future enrollment, including adds and section changes.",billing,medium
+"How can a student get an immediate release of an account hold?",unl_student_account_policies,Sanctions,"By paying with cash, cashier's check, money order, or credit card.",billing,medium
+"What does granting eConsent allow students to do?",unl_student_account_policies,If you Grant eConsent,"It gives full access to the MyRED dashboard and related electronic records and processes.",billing,medium
+"What happens if a student does not grant eConsent?",unl_student_account_policies,If you do NOT Consent,"The student loses online access to MyRED and electronic correspondence with Financial Aid, Student Accounts, and the Registrar's Office.",billing,medium
+"What payment method does UNL recommend in the e-payment system?",unl_payment_credits_refunds,Payment Methods,"Online check.",payments,easy
+"What transaction fee is charged for an online check payment?",unl_payment_credits_refunds,Payment Methods,"$0.50 per transaction.",payments,easy
+"What convenience fee is charged for domestic credit card payments?",unl_payment_credits_refunds,Payment Methods,"2.95 percent with a $3 minimum.",payments,medium
+"How are refunds issued when a student account has a credit balance?",unl_payment_credits_refunds,Refunds,"By direct deposit or a check in the mail.",payments,easy
+"Which system do students use to access and pay their bill online?",unl_pay_bill_online,UNL Access and Pay My Bill Online,"MyRED.",payments,easy
+"What does the estimated cost of attendance include?",unl_cost_of_attendance,Estimated Cost of Attendance,"It includes tuition and fees, housing and food, books and supplies, transportation, personal expenses, and loan fees.",financial_aid,medium
+"Where can students find support if they are experiencing food or housing insecurity?",unl_cost_of_attendance,Food and Housing Security,"Nebraska provides food and housing security resources and emergency financial aid options.",financial_aid,easy
+"On what basis can scholarships be awarded at Nebraska?",unl_scholarships,Content,"On academics, financial need, leadership, service, or a combination of factors.",scholarships,easy
+"Do scholarships need to be repaid?",unl_scholarships,Content,"No.",scholarships,easy
+"When can current undergraduates start submitting scholarship applications for the next academic year?",unl_scholarships,Scholarships for Current Undergraduates,"Beginning in October.",scholarships,easy
+"What is the scholarship application deadline for current undergraduates?",unl_scholarships,Scholarships for Current Undergraduates,"February 1.",scholarships,easy
+"How often is satisfactory academic progress measured?",unl_sap_policy,SAP for Financial Aid Recipients Policy,"Once annually at the end of each spring semester.",sap,easy
+"What percentage of attempted credit hours must undergraduates complete to meet SAP pace requirements?",unl_sap_policy,For Undergraduate Students:,"67 percent.",sap,easy
+"What cumulative GPA must undergraduates maintain after four or more semesters to meet SAP?",unl_sap_policy,For Undergraduate Students:,"A 2.000 cumulative GPA.",sap,easy
+"What is the maximum attempted credit-hour limit for undergraduate SAP?",unl_sap_policy,For Undergraduate Students:,"180 attempted credit hours from all institutions attended.",sap,medium
+"How does academic bankruptcy affect SAP calculations?",unl_sap_policy,Academic Bankruptcy:,"It may improve SAP GPA, but the bankrupted attempted and earned hours still remain in SAP calculations.",sap,hard
+"What service does NEST provide for engineering students?",unl_nest_support,UNL NEST Student Support,"Free tutoring and academic support.",student_services,easy
+"Who can use NEST tutoring services?",unl_nest_support,UNL NEST Student Support,"All engineering students.",student_services,easy
