@@ -7,7 +7,7 @@ A retrieval-augmented assistant that answers questions over university policies 
 - Domain: `University of Nebraska-Lincoln` undergraduate CS policies and student rules
 - Corpus: `24` official documents, `285` parsed sections, `383` indexed chunks
 - Retrieval stack: `OpenRouter embeddings + Qdrant dense index + BM25 sparse index + reranking`
-- Product surfaces: `Streamlit UI + FastAPI API`
+- Product surfaces: `React + TypeScript frontend + FastAPI API`, with Streamlit retained as a fallback
 
 ### Final metrics
 
@@ -25,7 +25,7 @@ A retrieval-augmented assistant that answers questions over university policies 
 
 Generic chatbots often hallucinate or miss institution-specific rules. This project uses retrieval-augmented generation (RAG) to answer questions from curated university documents instead of relying on model memory alone.
 
-It is designed to be a strong CV project because it demonstrates:
+It is designed to be a strong project because it demonstrates:
 
 - document ingestion and parsing
 - chunking and embeddings
@@ -47,7 +47,7 @@ This repo currently implements a real-corpus RAG system with retrieval hardening
 - build a sparse BM25 index from chunk text
 - fuse dense and sparse retrieval, rerank results, and diversify by source document
 - answer questions with citations to retrieved chunks
-- expose both a FastAPI API and a Streamlit UI
+- expose a typed FastAPI API, a production React frontend, and a Streamlit fallback
 - compare dense vs hybrid retrieval against a handcrafted evaluation set
 - evaluate hosted answers for faithfulness, completeness, citation usefulness, and refusal behavior
 
@@ -69,29 +69,29 @@ The current demo corpus is:
 
 ```mermaid
 flowchart LR
-    A["Raw Documents"] --> B["Manifest Sync + Loaders"]
-    B --> C["Cleaning + Section Split"]
-    C --> D["Recursive Chunking"]
-    D --> E["Embeddings"]
-    D --> F["Sparse Chunk Catalog"]
-    E --> G["Qdrant Dense Index"]
-    F --> H["BM25 Sparse Index"]
-    G --> I["Hybrid Retriever + Reranker"]
-    H --> I
-    I --> J["Answer Generation"]
-    J --> K["FastAPI"]
-    J --> L["Streamlit"]
+    A["Public UNL documents"] --> B["Manifest sync + parsing"]
+    B --> C["Section-aware chunking"]
+    C --> D["Embeddings + Qdrant"]
+    C --> E["BM25 sparse index"]
+    D --> F["Hybrid retrieval + reranking"]
+    E --> F
+    F --> G["Grounded answer + citations"]
+    G --> H["FastAPI"]
+    H --> I["React + TypeScript"]
+    G --> J["Streamlit fallback"]
+    K["Evaluation datasets"] --> L["Retrieval + answer evaluation"]
+    L --> M["Reports and failure analysis"]
 ```
 
 ## Screenshots
 
 ### Answer with citations
 
-![Answer with citations](reports/figures/answer_with_citations.svg)
+![React answer with citations](reports/figures/react_answer_with_citations.png)
 
 ### Source panel
 
-![Source panel](reports/figures/source_panel.svg)
+![React mobile evidence panel](reports/figures/react_mobile_evidence.png)
 
 ### Failure analysis artifact
 
@@ -101,7 +101,10 @@ flowchart LR
 
 - Python
 - FastAPI
-- Streamlit
+- React 19 + TypeScript + Vite
+- React Markdown + sanitized Markdown rendering
+- Vitest + React Testing Library
+- Streamlit fallback
 - LangChain text splitting and OpenAI-compatible integrations
 - Qdrant
 - rank-bm25
@@ -127,6 +130,15 @@ rag-assistant/
 |- app/
 |  |- fastapi_app.py
 |  `- streamlit_app.py
+|- frontend/
+|  |- src/
+|  |  |- api/
+|  |  |- components/
+|  |  |- hooks/
+|  |  |- styles/
+|  |  `- types/
+|  |- package.json
+|  `- vite.config.ts
 |- data/
 |  |- corpus_manifest.csv
 |  |- raw/
@@ -156,7 +168,7 @@ rag-assistant/
 
 ## Getting started
 
-### 1. Install dependencies
+### 1. Install backend dependencies
 
 ```powershell
 python -m venv .venv
@@ -175,6 +187,8 @@ pip install -r requirements-eval.txt
 ```powershell
 Copy-Item .env.example .env
 ```
+
+For local React development, the default CORS origins in `.env.example` are sufficient. For a hosted frontend, replace them with the exact public origin; wildcard origins are rejected.
 
 For OpenAI:
 
@@ -208,7 +222,20 @@ python -m src.ingest --recreate
 uvicorn app.fastapi_app:app --reload
 ```
 
-### 5. Run the UI
+### 5. Run the React frontend
+
+The frontend requires Node.js `20.19` or newer. In a second terminal:
+
+```powershell
+Set-Location frontend
+Copy-Item .env.example .env
+npm install
+npm run dev
+```
+
+`VITE_API_BASE_URL` is the only browser environment variable. It must point to the FastAPI base URL and must not contain credentials.
+
+### 6. Run the Streamlit fallback
 
 ```powershell
 streamlit run app/streamlit_app.py
@@ -216,11 +243,39 @@ streamlit run app/streamlit_app.py
 
 ## API endpoints
 
-- `GET /health`
-- `GET /metadata`
-- `POST /ask`
-- `POST /ingest`
-- `POST /reindex`
+- Public frontend endpoints: `GET /health`, `GET /metadata`, and `POST /ask`
+- Administrative endpoints: `POST /ingest` and `POST /reindex`
+
+Administrative endpoints require `X-Admin-Key` to match `ADMIN_API_KEY`. If `ADMIN_API_KEY` is empty, both endpoints return `503` and remain disabled. Keep these endpoints protected or disabled whenever the backend is public.
+
+## Environment variables
+
+| Variable | Runtime | Purpose |
+| --- | --- | --- |
+| `VITE_API_BASE_URL` | Browser build | Public FastAPI base URL; never include secrets |
+| `CORS_ALLOWED_ORIGINS` | FastAPI | Comma-separated exact frontend origins |
+| `ADMIN_API_KEY` | FastAPI | Enables protected ingestion and reindexing operations |
+| `QDRANT_URL` / `QDRANT_API_KEY` | FastAPI | Remote vector database connection for hosted deployments |
+| `EMBEDDING_PROVIDER` / `GENERATION_PROVIDER` | FastAPI | Selects local, OpenAI, or OpenRouter providers |
+| `OPENAI_API_KEY` / `OPENROUTER_API_KEY` | FastAPI only | Hosted model credentials; never expose to Vite |
+
+See `.env.example` and `frontend/.env.example` for the complete development configuration.
+
+## Production build and deployment
+
+Build the static frontend:
+
+```powershell
+Set-Location frontend
+npm install
+npm run lint
+npm run test
+npm run build
+```
+
+Deploy `frontend/dist/` to a static host and deploy the repository `Dockerfile` as the separate FastAPI service. Configure `VITE_API_BASE_URL` at frontend build time and set the deployed frontend origin in `CORS_ALLOWED_ORIGINS` on the backend. No SPA rewrite rule is required because the application has a single route.
+
+Use a remote Qdrant service for the hosted demo. Local Qdrant storage is intended for single-process development and cannot safely support independent hosted API instances. This repository does not claim a live deployment URL.
 
 ## Retrieval evaluation
 
@@ -298,6 +353,7 @@ The ingestion step also writes chunk inspection artifacts under `data/parsed/`, 
 
 ## Notes
 
+- This is an independent portfolio project using public University of Nebraska-Lincoln documents. It is not an official UNL product.
 - The current corpus uses public official UNL pages and documents captured through `data/corpus_manifest.csv`.
 - `data/raw/` and `data/parsed/` are generated during ingestion and are intentionally not committed.
 - `reports/*.json` are generated benchmark outputs and are intentionally not committed.

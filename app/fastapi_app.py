@@ -1,7 +1,12 @@
 from __future__ import annotations
 
-from fastapi import Depends, FastAPI, HTTPException
+from secrets import compare_digest
+from typing import Annotated
 
+from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+
+from src.config import Settings, get_settings
 from src.models import (
     AnswerResponse,
     AskRequest,
@@ -19,9 +24,35 @@ app = FastAPI(
     description="Grounded question answering over curated university documents.",
 )
 
+settings = get_settings()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.allowed_frontend_origins,
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "X-Admin-Key"],
+)
+
 
 def get_pipeline() -> RAGAssistant:
     return get_rag_assistant()
+
+
+def require_admin_key(
+    x_admin_key: Annotated[str | None, Header(alias="X-Admin-Key")] = None,
+    current_settings: Settings = Depends(get_settings),
+) -> None:
+    configured_key = current_settings.admin_api_key
+    if configured_key is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Administrative API operations are disabled on this deployment.",
+        )
+    if x_admin_key is None or not compare_digest(
+        x_admin_key,
+        configured_key.get_secret_value(),
+    ):
+        raise HTTPException(status_code=401, detail="A valid administrative key is required.")
 
 
 @app.get("/health", response_model=HealthResponse)
@@ -44,11 +75,17 @@ def ask(request: AskRequest, pipeline: RAGAssistant = Depends(get_pipeline)) -> 
         raise HTTPException(status_code=409, detail=str(exc)) from exc
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="The assistant could not complete this request. Please try again.",
+        ) from exc
 
 
 @app.post("/ingest", response_model=IngestResponse)
 def ingest(
     request: IngestRequest,
+    _authorized: None = Depends(require_admin_key),
     pipeline: RAGAssistant = Depends(get_pipeline),
 ) -> IngestResponse:
     try:
@@ -62,6 +99,7 @@ def ingest(
 @app.post("/reindex", response_model=IngestResponse)
 def reindex(
     request: IngestRequest,
+    _authorized: None = Depends(require_admin_key),
     pipeline: RAGAssistant = Depends(get_pipeline),
 ) -> IngestResponse:
     try:

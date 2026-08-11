@@ -1,0 +1,14 @@
+.git
+.env
+.venv
+.pytest_cache
+.ruff_cache
+.qdrant
+.playwright-cli
+__pycache__
+*.py[cod]
+*.log
+data/parsed
+data/raw
+frontend
+output

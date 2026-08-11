@@ -1,6 +1,7 @@
 from fastapi.testclient import TestClient
 
 from app.fastapi_app import app, get_pipeline
+from src.config import Settings, get_settings
 from src.models import (
     AnswerResponse,
     HealthResponse,
@@ -100,4 +101,67 @@ def test_ask_endpoint() -> None:
 
     assert response.status_code == 200
     assert response.json()["citations"] == ["S1"]
+    app.dependency_overrides.clear()
+
+
+def test_cors_allows_configured_frontend_origin() -> None:
+    client = TestClient(app)
+
+    response = client.options(
+        "/health",
+        headers={
+            "Origin": "http://localhost:5173",
+            "Access-Control-Request-Method": "GET",
+        },
+    )
+
+    assert response.status_code == 200
+    assert response.headers["access-control-allow-origin"] == "http://localhost:5173"
+
+
+def test_cors_does_not_allow_unknown_origin() -> None:
+    client = TestClient(app)
+
+    response = client.options(
+        "/health",
+        headers={
+            "Origin": "https://untrusted.example",
+            "Access-Control-Request-Method": "GET",
+        },
+    )
+
+    assert "access-control-allow-origin" not in response.headers
+
+
+def test_admin_endpoint_is_disabled_without_configured_key() -> None:
+    app.dependency_overrides[get_pipeline] = lambda: FakeAssistant()
+    app.dependency_overrides[get_settings] = lambda: Settings(ADMIN_API_KEY=None)
+    client = TestClient(app)
+
+    response = client.post("/ingest", json={"recreate": True})
+
+    assert response.status_code == 503
+    assert response.json()["detail"] == (
+        "Administrative API operations are disabled on this deployment."
+    )
+    app.dependency_overrides.clear()
+
+
+def test_admin_endpoint_requires_matching_key() -> None:
+    app.dependency_overrides[get_pipeline] = lambda: FakeAssistant()
+    app.dependency_overrides[get_settings] = lambda: Settings(
+        ADMIN_API_KEY="test-admin-key"
+    )
+    client = TestClient(app)
+
+    unauthorized = client.post("/reindex", json={"recreate": True})
+    authorized = client.post(
+        "/reindex",
+        json={"recreate": True},
+        headers={"X-Admin-Key": "test-admin-key"},
+    )
+
+    assert unauthorized.status_code == 401
+    assert authorized.status_code == 200
+    assert authorized.json()["status"] == "ok"
     app.dependency_overrides.clear()

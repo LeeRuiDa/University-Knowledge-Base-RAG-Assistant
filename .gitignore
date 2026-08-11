@@ -18,3 +18,10 @@ data/raw/
 reports/*.json
 data/raw/**/*.pdf
 reports/figures/*.png
+!reports/figures/react_answer_with_citations.png
+!reports/figures/react_mobile_evidence.png
+frontend/.env
+frontend/.env.local
+frontend/coverage/
+frontend/dist/
+frontend/node_modules/

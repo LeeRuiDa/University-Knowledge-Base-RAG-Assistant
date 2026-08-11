@@ -3,7 +3,7 @@ from __future__ import annotations
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import Field
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -42,6 +42,9 @@ class Settings(BaseSettings):
     openrouter_http_referer: str | None = None
     openrouter_app_name: str | None = "University Knowledge Base Assistant"
 
+    cors_allowed_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
+    admin_api_key: SecretStr | None = Field(default=None, alias="ADMIN_API_KEY")
+
     chunk_size: int = 700
     chunk_overlap: int = 80
     retrieval_k: int = 5
@@ -68,6 +71,19 @@ class Settings(BaseSettings):
     @property
     def qdrant_mode(self) -> str:
         return "server" if self.qdrant_url else "local"
+
+    @property
+    def allowed_frontend_origins(self) -> list[str]:
+        origins = list(
+            dict.fromkeys(
+                origin.strip().rstrip("/")
+                for origin in self.cors_allowed_origins.split(",")
+                if origin.strip()
+            )
+        )
+        if "*" in origins:
+            raise ValueError("CORS_ALLOWED_ORIGINS must contain explicit origins, not '*'.")
+        return origins
 
 
 @lru_cache(maxsize=1)
